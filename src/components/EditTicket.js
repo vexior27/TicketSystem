@@ -40,18 +40,18 @@ export default function EditTicket() {
    }
 
    return (
-      <div>
+      <div className='flex flex-col items-center gap-5'>
          <h1 className='text-4xl mt-10 text-center'>Edit ticket</h1>
-         <form onSubmit={handleSubmit}>
-            <label>
-               Title:
-               <input type='text' value={title} onChange={(e) => setTitle(e.target.value)}/>
+         <form onSubmit={handleSubmit} className='ticket bg-gray-50 w-1/3 rounded-md border border-gray-100 p-10 flex flex-col items-center justify-center gap-5'>
+            <label className='font-medium text-xl'>
+               Title
+               <input type='text' value={title} onChange={(e) => setTitle(e.target.value)} required className='ease-out duration-100 font-normal p-2 bg-transparent focus:border-b-green-400 focus:outline-none border-gray-100 border-b-2 ml-2 placeholder:font-normal' placeholder='New title'/>
             </label>
-            <label>
-               Description:
-               <input type='text' value={description} onChange={(e) => setDescription(e.target.value)}/>
+            <label className='font-medium text-xl'>
+               Description
+               <input type='text' value={description} onChange={(e) => setDescription(e.target.value)} required className='ease-out duration-100 font-normal p-2 bg-transparent focus:border-b-green-400 focus:outline-none border-gray-100 border-b-2 ml-2 placeholder:font-normal' placeholder='New description'/>
             </label>
-            <button type='submit'>
+            <button type='submit' className="ease-out duration-100 bg-green-500 text-white pl-5 pr-5 pt-2 pb-2 rounded-md border border-green-500 hover:bg-transparent hover:text-green-500 hover:scale-105">
                Save changes
             </button>
          </form>
