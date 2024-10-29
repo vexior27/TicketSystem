@@ -16,9 +16,9 @@ export default function App() {
     <Router>
       <Routes>
         <Route path='/' element={<TicketList/>}/>
-        <Route path='/ticket:id' element={<TicketDetails/>}/>
-        <Route path='add-ticket' element={<AddTicket/>}/>
-        <Route path='edit-ticket/:id' element={<EditTicket/>}/>
+        <Route path='/ticket/:id' element={<TicketDetails/>}/>
+        <Route path='/add-ticket' element={<AddTicket/>}/>
+        <Route path='/edit-ticket/:id' element={<EditTicket/>}/>
       </Routes>
     </Router>
   );
