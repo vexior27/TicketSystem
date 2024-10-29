@@ -1,6 +1,8 @@
 
 export default function TicketList() {
    return (
-      <div>Ticket list</div>
+      <div className="text-red-500">
+         Ticket list
+      </div>
    )
 }
