@@ -1,14 +1,18 @@
 
 import { useState, useEffect } from "react"
 
+import { getTickets } from "../api/ticket/getTickets";
+
 import { Link } from "react-router-dom";
 
 export default function TicketList() {
 
-   const [tickets, setTickets] = useState([
-      { id: '1', title: 'First Ticket', description: 'This is the first ticket' },
-      { id: '2', title: 'Second Ticket', description: 'This is the second ticket' },
-   ]);
+   const [tickets, setTickets] = useState([]);
+
+   useEffect(() => {
+      const allTickets = getTickets();
+      setTickets(allTickets);
+   }, [])
 
    const deleteTicketById = (id) => {
       setTickets(tickets.filter(ticket => ticket.id !== id));
@@ -17,7 +21,7 @@ export default function TicketList() {
    return (
       <div className="">
          <h1 className="text-4xl m-5 text-center">Ticket List</h1>
-         <div className="ticket__container ">
+         <div className="ticket__container">
             <ul className="flex flex-col items-center gap-5">
                {tickets.map(ticket => (
                   <li key={ticket.id} className="ticket bg-gray-50 w-1/3 rounded-md border border-gray-100 p-10 ease-out duration-100 hover:scale-105">
@@ -33,6 +37,13 @@ export default function TicketList() {
                   </li>
                ))}
             </ul>
+         </div>
+         <div className="btn__container flex items-center justify-center p-10">
+            <Link to='/add-ticket' >
+               <button className="ease-out duration-100 bg-green-500 text-white pl-5 pr-5 pt-2 pb-2 rounded-md border border-green-500 hover:bg-transparent hover:text-green-500 hover:scale-105">
+                  Add ticket
+               </button>
+            </Link>
          </div>
       </div>
    )
