@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addTicket } from '../api/ticket/addTicket';
 
+import {toast} from "react-hot-toast"
+
 export default function AddTicket() {
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
@@ -12,10 +14,10 @@ export default function AddTicket() {
         
         if (title && description) {
             addTicket({ title, description });
-            alert('Ticket został dodany');
+            toast.success('Successfully added new ticket!')
             navigate('/');  // Przekierowanie na stronę główną po dodaniu ticketu
         } else {
-            alert('Tytuł i opis są wymagane!');
+            toast.error('Tytuł i opis są wymagane!');
         }
     };
 

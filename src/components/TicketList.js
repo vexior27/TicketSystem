@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react"
 
-import { getTickets } from "../api/ticket/getTickets";
+import { getTickets, deleteTicket } from "../api/ticket/getTickets";
 
 import { Link } from "react-router-dom";
 
@@ -15,7 +15,8 @@ export default function TicketList() {
    }, [])
 
    const deleteTicketById = (id) => {
-      setTickets(tickets.filter(ticket => ticket.id !== id));
+      const updatedTickets = deleteTicket(id);
+      setTickets(updatedTickets);
    };
 
    return (
@@ -28,12 +29,12 @@ export default function TicketList() {
                      <Link to={`/ticket/${ticket.id}`}>
                         <h3 className="font-medium text-xl">{ticket.title}</h3>
                         <p className="mb-2">{ticket.description}</p>
+                        </Link>
                            <Link to={`/edit-ticket/${ticket.id}`}>
                               <button className="edit__button ease-out duration-100 bg-black text-white pl-5 pr-5 pt-2 pb-2 rounded-md mr-2 border border-black hover:bg-transparent hover:text-black hover:scale-105">Edit</button>
                            </Link>
                         {/* delete ticket */}
                         <button className="delete__button ease-out duration-100 bg-red-500 text-white pl-5 pr-5 pt-2 pb-2 rounded-md border border-red-500 hover:bg-transparent hover:text-red-500 hover:scale-105" onClick={() => deleteTicketById(ticket.id)}>Delete</button>
-                     </Link>
                   </li>
                ))}
             </ul>

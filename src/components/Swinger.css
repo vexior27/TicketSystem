@@ -1,0 +1,50 @@
+.Swinger img {
+   rotate: 180deg;
+   width: 10vw;
+   height: auto;
+   animation: salto infinite linear 2s;
+}
+
+.Swinger {
+   position: fixed;
+   left: 50%;
+   top: 50%;
+   animation: swing infinite ease-in-out 3s;
+   z-index: -1;
+   opacity: 50%;
+   user-select: none;
+}
+
+.Swinger::before {
+   content: "";
+   position: absolute;
+   left: 50%;
+   bottom: 100%;
+   transform: translate(-50%, 0);
+   height: 1000px;
+   border-left: 5px dashed gray;
+}
+
+@keyframes salto {
+   from {
+       transform: rotateY(0deg)
+   }
+
+   to {
+       transform: rotateY(360deg)
+   }
+}
+
+@keyframes swing {
+   from {
+       transform: rotate(-15deg) translateX(calc(40vw - 50%));
+   }
+
+   50% {
+       transform: rotate(15deg) translateX(calc(-40vw - 50%));
+   }
+
+   to {
+       transform: rotate(-15deg) translateX(calc(40vw - 50%));
+   }
+}

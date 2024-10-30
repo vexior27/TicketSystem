@@ -4,6 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getTicket } from '../api/ticket/getTicket';
 import { editTicket } from '../api/ticket/editTicket';
 
+import {toast} from "react-hot-toast"
+
 export default function EditTicket() {
 
    const { id } = useParams();
@@ -27,7 +29,7 @@ export default function EditTicket() {
       if(title !== '' && description !== '') {
          const succes = editTicket(id, {id,title,description});
          if(succes) {
-            alert('Ticket was succesfully updated!')
+            toast.success("Ticket succesfully updated!")
             navigate('/')
          }
          else {

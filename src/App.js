@@ -11,16 +11,24 @@ import TicketDetails from './components/TicketDetails';
 import AddTicket from './components/AddTicket';
 import EditTicket from './components/EditTicket';
 
+import { Swinger } from './components/Swinger';
+
+import {Toaster} from "react-hot-toast"
+
 export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<TicketList/>}/>
-        <Route path='/ticket/:id' element={<TicketDetails/>}/>
-        <Route path='/add-ticket' element={<AddTicket/>}/>
-        <Route path='/edit-ticket/:id' element={<EditTicket/>}/>
-      </Routes>
-    </Router>
+    <>
+      <Toaster/>
+      <Swinger/>
+      <Router>
+        <Routes>
+          <Route path='/' element={<TicketList/>}/>
+          <Route path='/ticket/:id' element={<TicketDetails/>}/>
+          <Route path='/add-ticket' element={<AddTicket/>}/>
+          <Route path='/edit-ticket/:id' element={<EditTicket/>}/>
+        </Routes>
+      </Router>
+    </>
   );
 }
 
