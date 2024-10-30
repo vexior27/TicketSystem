@@ -1,13 +1,23 @@
 
 import { useState, useEffect } from "react"
-
 import { getTickets, deleteTicket } from "../api/ticket/getTickets";
-
 import { Link } from "react-router-dom";
+
+import SearchBar from "./SearchBar";
 
 export default function TicketList() {
 
    const [tickets, setTickets] = useState([]);
+   const [searchQuery, setSearchQuery] = useState('');
+
+   const filteredTickets = tickets.filter( ticket => 
+      ticket.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      ticket.description.toLowerCase().includes(searchQuery.toLowerCase())
+   );
+
+   const handleSearchChange = (query) => {
+      setSearchQuery(query);
+   };
 
    useEffect(() => {
       const allTickets = getTickets();
@@ -22,9 +32,11 @@ export default function TicketList() {
    return (
       <div className="">
          <h1 className="text-4xl m-5 text-center">Ticket List</h1>
-         <div className="ticket__container">
-            <ul className="flex flex-col items-center gap-5">
-               {tickets.map(ticket => (
+         <div className="ticket__container flex flex-col items-center justify-start gap-5">
+            <SearchBar searchQuery={searchQuery} onSearchChange={handleSearchChange} />
+
+            <ul className="flex flex-col items-center gap-5 w-full">
+               {filteredTickets.map(ticket => (
                   <li key={ticket.id} className="ticket bg-gray-50 w-1/3 rounded-md border border-gray-100 p-10 ease-out duration-100 hover:scale-105">
                      <Link to={`/ticket/${ticket.id}`}>
                         <h3 className="font-medium text-xl">{ticket.title}</h3>
