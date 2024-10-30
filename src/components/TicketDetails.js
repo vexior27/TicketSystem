@@ -21,8 +21,9 @@ export default function TicketDetails() {
          <h1 className='text-4xl mt-10 text-center'>Ticket details</h1>
          <div className='bg-gray-50 w-1/3 rounded-md border border-gray-100 p-10 ease-out duration-100 cursor-pointer hover:scale-105'>
             <h2 className='font-medium text-xl'>ID: {ticket.id}</h2>
-            <h1 className='font-medium text-xl'>Title: <span className='font-normal'>{ticket.title}</span></h1>
+            <h1 className='font-medium'>Title: <span className='font-normal'>{ticket.title}</span></h1>
             <p className='font-medium'>Description: <span className='font-normal'>{ticket.description}</span></p>
+            <p className='font-medium'>Date: <span className='font-normal'>{ticket.date.toLocaleDateString()}</span></p>
          </div>
       </div>
    );

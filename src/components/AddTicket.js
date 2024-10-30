@@ -11,9 +11,9 @@ export default function AddTicket() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+        const date = new Date();
         if (title && description) {
-            addTicket({ title, description });
+            addTicket({ title, description, date});
             toast.success('Successfully added new ticket!')
             navigate('/');  // Przekierowanie na stronę główną po dodaniu ticketu
         } else {
