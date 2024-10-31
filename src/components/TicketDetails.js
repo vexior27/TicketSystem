@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { Card, Button, Group, Text, Flex, Title } from "@mantine/core";
+
 import { getTicket } from '../api/ticket/getTicket';
 
 export default function TicketDetails() {
@@ -18,13 +20,24 @@ export default function TicketDetails() {
 
    return (
       <div className='flex flex-col items-center gap-5'>
-         <h1 className='text-4xl mt-10 text-center'>Ticket details</h1>
-         <div className='bg-gray-50 w-1/3 rounded-md border border-gray-100 p-10 ease-out duration-100 cursor-pointer hover:scale-105'>
-            <h2 className='font-medium text-xl'>ID: {ticket.id}</h2>
-            <h1 className='font-medium'>Title: <span className='font-normal'>{ticket.title}</span></h1>
-            <p className='font-medium'>Description: <span className='font-normal'>{ticket.description}</span></p>
-            <p className='font-medium'>Date: <span className='font-normal'>{ticket.date.toLocaleDateString()}</span></p>
-         </div>
+         <Title 
+            m='xs'
+            align='center'
+         >
+            Ticket details
+         </Title>
+         <Card
+            shadow="sm"
+            padding="lg"
+            radius="md"
+            withBorder
+            className="w-1/3"
+         >
+            <Text fw={500}>ID: <span className='font-normal'>{ticket.id}</span></Text>
+            <Text fw={500}>Title: <span className='font-normal'>{ticket.title}</span></Text>
+            <Text fw={500}>Description: <span className='font-normal'>{ticket.description}</span></Text>
+            <Text fw={500}>Date: <span className='font-normal'>{ticket.date.toLocaleDateString()}</span></Text>
+         </Card>
       </div>
    );
 }

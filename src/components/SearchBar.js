@@ -1,15 +1,16 @@
 import React from 'react';
-import { CiSearch } from "react-icons/ci";
+
+import { Input } from '@mantine/core';
 
 export default function SearchBar({ searchQuery, onSearchChange }) {
    return (
       <div className="flex justify-center w-full">
-         <input
+         <Input
             type="text"
             placeholder="Search ticket..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="p-2 border border-gray-300 rounded w-1/5"
+            className='w-1/4'
          />
       </div>
    );

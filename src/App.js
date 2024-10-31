@@ -1,5 +1,6 @@
 
-import './App.css';
+import '@mantine/core/styles.css';
+
 
 import Ticket from './components/Ticket';
 
@@ -15,20 +16,23 @@ import { Swinger } from './components/Swinger';
 
 import {Toaster} from "react-hot-toast"
 
+import { MantineProvider } from '@mantine/core';
+
+
 export default function App() {
   return (
-    <>
-      <Toaster/>
-      <Swinger/>
-      <Router>
-        <Routes>
-          <Route path='/' element={<TicketList/>}/>
-          <Route path='/ticket/:id' element={<TicketDetails/>}/>
-          <Route path='/add-ticket' element={<AddTicket/>}/>
-          <Route path='/edit-ticket/:id' element={<EditTicket/>}/>
-        </Routes>
-      </Router>
-    </>
+    <MantineProvider withGlobalStyles withNormalizeCSS >
+        <Toaster/>
+        <Swinger/>
+        <Router>
+          <Routes>
+            <Route path='/' element={<TicketList/>}/>
+            <Route path='/ticket/:id' element={<TicketDetails/>}/>
+            <Route path='/add-ticket' element={<AddTicket/>}/>
+            <Route path='/edit-ticket/:id' element={<EditTicket/>}/>
+          </Routes>
+        </Router>
+    </MantineProvider>
   );
 }
 

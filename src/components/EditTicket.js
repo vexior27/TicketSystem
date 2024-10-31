@@ -6,6 +6,8 @@ import { editTicket } from '../api/ticket/editTicket';
 
 import {toast} from "react-hot-toast"
 
+import { Input, Textarea, Button, Title } from "@mantine/core";
+
 export default function EditTicket() {
 
    const { id } = useParams();
@@ -43,34 +45,36 @@ export default function EditTicket() {
 
    return (
       <div className='flex flex-col items-center gap-5'>
-         <h1 className='text-4xl mt-10 text-center'>Edit ticket</h1>
+         <Title align='center' m='xs'>Edit ticket</Title>
          <form onSubmit={handleSubmit} className='flex flex-col gap-3 w-1/3 '>
             <label className='font-medium text-lg flex flex-col gap-1 '>
                Title
-               <input 
+               <Input 
                   type='text' 
-                  value={title} 
+                  value={title}
+                  fw={400} 
                   onChange={(e) => setTitle(e.target.value)} 
                   required 
-                  className='ease-out duration-100 font-normal p-2 bg-transparent focus:border-b-green-400 focus:outline-none border-gray-100 border-b-2 placeholder:font-normal' 
                />
             </label>
             <label className='font-medium text-lg flex flex-col gap-1'>
                Description
-               <textarea 
+               <Textarea 
                   type='text' 
+                  fw={400} 
                   value={description} 
                   onChange={(e) => setDescription(e.target.value)} 
                   required 
-                  className='ease-out duration-100 font-normal p-2 bg-transparent focus:border-b-green-400 focus:outline-none border-gray-100 border-b-2 placeholder:font-normal' 
+                   
                />
             </label>
-            <button 
+            <Button 
                type='submit' 
-               className="ease-out duration-100 bg-green-500 text-white pl-5 pr-5 pt-2 pb-2 rounded-md border border-green-500 hover:bg-transparent hover:text-green-500 hover:scale-105 w-1/3"
+               color="green" 
+               w={150}
             >
                Save changes
-            </button>
+            </Button>
          </form>
       </div>
    )
